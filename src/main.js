@@ -242,7 +242,6 @@ scene("lose", (score) => {
 
     onKeyPress("space", () => go("game"));
     onClick(() => go("game"));
-
 });
 
 go("starterpage");
