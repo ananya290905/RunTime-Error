@@ -17,11 +17,18 @@ loadSprite("intr", "sprites/intr.png");
 loadSprite("title", "sprites/title.png");
 
 loadSound("bg", "sounds/mixkit-game-level-music-689.mp3");
+loadSound("womp", "sounds/Recording.m4a")
 
 const music = play("bg", {
 	volume: 0.8,
 	loop: true,
 	paused: true,
+})
+
+const womp = play("womp", {
+	paused: true,
+	volume: 5,
+	loop: true,
 })
 
 scene("starterpage", () => {
@@ -55,12 +62,14 @@ scene("starterpage", () => {
 
 scene("game", () => {
 
+
 	let jumpCount = 0;
 	const maxJumps = 2;
 	let isWalking = false;
 	let isBroken = false;
 	let isInt = false;
 	music.paused = false;
+	womp.paused = true;
 
     setGravity(1800);
 
@@ -211,6 +220,7 @@ scene("game", () => {
 scene("lose", (score) => {
 
 	music.paused = true;
+	womp.paused = false;
 		
 	add([
 		rect(width(), 1000),
